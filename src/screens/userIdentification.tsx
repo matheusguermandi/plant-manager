@@ -5,8 +5,11 @@ import { Button } from '../components/Button';
 
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
+import { useNavigation } from '@react-navigation/core';
 
 export function UserIdentification() {
+    const navigation = useNavigation();
+
     const [isFocused, setIsFocused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
     const [name, setName] = useState<string>();
@@ -25,6 +28,11 @@ export function UserIdentification() {
         setName(value);
     }
 
+    function handleSubmit() {
+        navigation.navigate('Confirmation');
+    }
+
+
     return (
         <SafeAreaView style={styles.container}>
             <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -36,16 +44,16 @@ export function UserIdentification() {
                         <Text style={styles.textForm}>
                             Como podemos chamar você?
                         </Text>
-                        <TextInput 
+                        <TextInput
                             placeholder="Digite seu nome aqui ..."
                             style={[styles.inputForm, (isFocused || isFilled) && { borderColor: colors.green }]}
-                            onBlur={handleInputBlur} 
+                            onBlur={handleInputBlur}
                             onFocus={handleInputFocus}
                             onChangeText={handleInputChange}
-                            />
+                        />
 
                         <View style={styles.buttonForm}>
-                            <Button title="Confirmar" />
+                            <Button title="Confirmar" onPress={handleSubmit} />
                         </View>
                     </View>
                 </TouchableWithoutFeedback>

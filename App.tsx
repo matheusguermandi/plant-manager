@@ -1,12 +1,16 @@
+import 'react-native-gesture-handler';
+
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { Confirmation } from './src/screens/confirmation';
 import AppLoading from 'expo-app-loading';
 
-import { 
+import Routes from './src/routes';
+
+import {
   useFonts,
   Jost_400Regular,
-  Jost_600SemiBold } from "@expo-google-fonts/jost";
+  Jost_600SemiBold
+} from "@expo-google-fonts/jost";
 
 export default function App() {
   const [fonstLoaded] = useFonts({
@@ -14,13 +18,13 @@ export default function App() {
     Jost_600SemiBold
   });
 
-  if(!fonstLoaded)
+  if (!fonstLoaded)
     return <AppLoading />
-  
+
   return (
     <>
       <StatusBar barStyle="light-content" translucent />
-      <Confirmation />
+      <Routes />
     </>
   );
 }

@@ -13,7 +13,10 @@ export function Confirmation() {
             <Text style={styles.emoji}>
                 😄
             </Text>
-            <Text style={styles.text}>
+            <Text style={styles.title}>
+                Prontinho
+            </Text>
+            <Text style={styles.subtitle}>
                 Agora vamos começar a cuidas das suas plantinhas com muito cuidado!
                 </Text>
             <View style={styles.footer}>
@@ -32,18 +35,25 @@ const styles = StyleSheet.create({
         paddingVertical: 60,
         paddingHorizontal: 50
     },
-    text: {
+    emoji: {
+        fontSize: 65
+    },
+    title: {
+        fontSize: 25,
+        fontFamily: fonts.heading,
+        textAlign: 'center',
+        color: colors.heading,
+        paddingVertical: 30
+    },
+    subtitle: {
         fontSize: 20,
         fontFamily: fonts.text,
         textAlign: 'center',
         color: colors.heading,
-        paddingVertical: 40
-    },
-    emoji: {
-        fontSize: 55
     },
     footer: {
         width: '100%',
         paddingHorizontal: 20,
+        marginTop: 40
     }
 });
