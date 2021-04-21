@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { UserIdentification } from './src/screens/userIdentification';
+import { Confirmation } from './src/screens/confirmation';
 import AppLoading from 'expo-app-loading';
 
 import { 
@@ -20,7 +20,7 @@ export default function App() {
   return (
     <>
       <StatusBar barStyle="light-content" translucent />
-      <UserIdentification />
+      <Confirmation />
     </>
   );
 }
