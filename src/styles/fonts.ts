@@ -3,6 +3,3 @@ export default {
     text: 'Jost_400Regular',
     complement: 'Jost_400Regular'
 };
-
-// Jost_400Regular,
-// Jost_600SemiBold

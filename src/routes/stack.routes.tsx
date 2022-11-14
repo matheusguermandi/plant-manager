@@ -1,34 +1,76 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import  { createStackNavigator } from '@react-navigation/stack';
 
-import { Welcome } from "../screens/welcome";
-import { UserIdentification } from "../screens/userIdentification";
-import { Confirmation } from "../screens/confirmation";
+import { enableScreens } from 'react-native-screens';
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
-import colors from "../../styles/colors"
+import { Welcome } from '../pages/Welcome';
+import { UserIdentification } from '../pages/UserIdentification';
+import { Confirmation } from '../pages/Confirmation';
+import { PlantSave } from '../pages/PlantSave';
+import { MyPlants } from '../pages/MyPlants';
 
-const stackRoutes = createStackNavigator();
+import colors from '../styles/colors';
+import AuthRoutes from './tab.routes';
+
+enableScreens();
+
+const stackRoutes = createSharedElementStackNavigator();
+// const stackRoutes = createStackNavigator();
+
 
 const AppRoutes: React.FC = () => (
-    <stackRoutes.Navigator headerMode="none"
+    <stackRoutes.Navigator
+        headerMode="none"
         screenOptions={{
             cardStyle: {
                 backgroundColor: colors.white
             },
-        }}>
+        }}
+    >
         <stackRoutes.Screen 
             name="Welcome"
-            component={Welcome} />
+            component={Welcome}
+        />
 
-        <stackRoutes.Screen
+        <stackRoutes.Screen 
             name="UserIdentification"
-            component={UserIdentification} />
+            component={UserIdentification}
+        />
 
-        <stackRoutes.Screen
+        <stackRoutes.Screen 
             name="Confirmation"
-            component={Confirmation} />
+            component={Confirmation}
+        />
+
+        <stackRoutes.Screen 
+            name="PlantSelect"
+            component={AuthRoutes}
+        />
+
+        <stackRoutes.Screen 
+            name="PlantSave"
+            component={PlantSave}
+            sharedElementsConfig = {(route) => {
+                const { plant } = route.params
+                return [
+                    {
+                        id: `item.${plant.id}.image`,
+                        animation: 'move',
+                        resize: 'clip',
+                        align: 'center-top'
+                    },
+                ]
+            }}
+        />
+
+        <stackRoutes.Screen 
+            name="MyPlants"
+            component={AuthRoutes}
+        />
 
     </stackRoutes.Navigator>
 )
+
 
 export default AppRoutes;
